@@ -1,0 +1,1 @@
+web: gunicorn scuba_social.wsgi

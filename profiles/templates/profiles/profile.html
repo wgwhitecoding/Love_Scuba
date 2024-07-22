@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="profile-header">
+        <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user.username }}" class="profile-picture rounded-circle" width="150" height="150">
+        <h2>{{ profile.user.username }}</h2>
+        <p>{{ profile.bio }}</p>
+        <p><strong>Location:</strong> {{ profile.location }}</p>
+        <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+        {% if profile.is_pro_diver %}
+            <p><strong>Qualifications:</strong> {{ profile.qualifications }}</p>
+            <p><strong>Dive Company:</strong> {{ profile.dive_company }}</p>
+            <p><strong>Dive Shop Location:</strong> {{ profile.dive_shop_location }}</p>
+        {% else %}
+            <p><strong>Certifications:</strong> {{ profile.certifications }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

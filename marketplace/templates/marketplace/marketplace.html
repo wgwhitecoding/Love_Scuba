@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Marketplace</h2>
+    <div class="items">
+        {% for item in items %}
+            <div class="item">
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.description }}</p>
+                <p><strong>Price:</strong> ${{ item.price }}</p>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="Item Image">
+                {% endif %}
+                <p><small>Seller: {{ item.seller.username }}</small></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

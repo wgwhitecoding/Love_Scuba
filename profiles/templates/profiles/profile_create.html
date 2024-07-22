@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Create Profile</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group">
+            <label for="id_is_pro_diver">Are you a professional diver?</label>
+            {{ form.is_pro_diver }}
+        </div>
+        <div id="pro-diver-fields" style="display: none;">
+            <div class="form-group">
+                <label for="id_qualifications">Qualifications</label>
+                {{ form.qualifications }}
+            </div>
+            <div class="form-group">
+                <label for="id_dive_company">Dive Company</label>
+                {{ form.dive_company }}
+            </div>
+            <div class="form-group">
+                <label for="id_dive_shop_location">Dive Shop Location</label>
+                {{ form.dive_shop_location }}
+            </div>
+        </div>
+        <div id="non-pro-diver-fields" style="display: none;">
+            <div class="form-group">
+                <label for="id_certifications">Certifications</label>
+                {{ form.certifications }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Profile</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/profile_form.js' %}"></script>
+{% endblock %}
+
